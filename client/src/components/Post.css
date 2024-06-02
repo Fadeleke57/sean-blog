@@ -1,0 +1,125 @@
+div.post {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1em;
+}
+
+div.post div.image {
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  margin: 0 auto;
+  border-top-left-radius: 1em;
+  border-top-right-radius: 1em;
+}
+
+div.post div.image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+div.post div.image2 {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  margin: 0 auto;
+  border-top-left-radius: 1em;
+  border-top-right-radius: 1em;
+}
+
+div.post div.image2 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+div.post div.texts {
+  display: flex;
+  width: 100%;
+  padding: 2em;
+  border-radius: 1em;
+}
+
+span.post-tag {
+  color: #575cff;
+  font-family: "Roboto Mono", monospace;
+  font-size: 12px;
+  font-weight: 900;
+  font-style: normal;
+  letter-spacing: 1.2px;
+  line-height: 21px;
+  margin: 0 0 14px;
+  text-transform: uppercase;
+}
+
+.post-title {
+  color: #1f1f1f;
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: 0;
+  line-height: 27px;
+}
+
+a.post-link  {
+  text-decoration: none;
+  color: inherit;
+}
+
+.info {
+  position: absolute;
+  bottom: .2em;
+  line-height: 18px;
+  size: 10px;
+  font-weight: 400;
+  color:#1f1f1f;
+  display: flex;
+  gap: 10px;
+  margin: 24px 0;
+  font-family: "Roboto", sans-serif;
+}
+
+div.post p.summary {
+  color: rgba(14, 16, 20, .7);
+  font-family: "Hanken Grotesk", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 22px;
+  margin-top: 24px;
+}
+
+.post-date {
+  color: #737a80
+}
+
+@media screen and (max-width: 950px) {
+  div.post div.image {
+    height: 300px;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  div.post{
+      grid-template-columns: .9fr 1.1fr;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  div.post div.image{
+    height: 200px;
+  }  
+  .summary {
+    display: none;
+  }
+  div.post div.texts {    padding: 2em 1em;
+  }
+  div.post div.image2 {
+    height: 150px;
+  }
+}
