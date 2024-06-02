@@ -1,1 +1,1 @@
-blog app for FERNIT - will transfer to typescript
+blog-app for sean cummings
