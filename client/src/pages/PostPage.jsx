@@ -21,7 +21,7 @@ export default function PostPage() {
 
   useEffect(() => {
     if (id) {
-      fetch(`http://localhost:4000/post/${id}`)
+      fetch(`https://sean-blog-server.onrender.com/post/${id}`)
         .then(response => response.json())
         .then(data => {
           setPostInfo(data);
@@ -82,7 +82,7 @@ export default function PostPage() {
 
         <div className='post-page-content-row1'>
           <div className='image'>
-            <img src={`http://localhost:4000/${postInfo.cover}`} alt='Post cover' />
+            <img src={`https://sean-blog-server.onrender.com/${postInfo.cover}`} alt='Post cover' />
           </div>
           <div className='post-page-content' dangerouslySetInnerHTML={{ __html: postInfo.content }}>
           </div>

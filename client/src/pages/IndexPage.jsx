@@ -15,7 +15,7 @@ export default function IndexPage() {
   const postsPerPage = 4;
 
   useEffect(() => {
-    fetch('http://localhost:4000/post').then(response => {
+    fetch('https://sean-blog-server.onrender.com/post').then(response => {
       response.json().then((posts) => {
         if (tag === 'All') {
           setPosts(posts);
