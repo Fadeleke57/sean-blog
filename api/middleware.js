@@ -7,16 +7,7 @@ const cookieParser = require('cookie-parser');
 const configureMiddleware = (app) => {
   const allowedOrigins = ['http://localhost:3000', 'https://repop-blog.vercel.app', 'https://repop-blog-server.onrender.com', 'https://sic-kappa.vercel.app', 'https://sean-blog-server.onrender.com'];
 
-  app.use(cors({
-    credentials: true,
-    origin: (origin, callback) => {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error('Not allowed by CORS'));
-      }
-    },
-  }));
+  app.use(cors());
     
   app.use(express.json());
   app.use(cookieParser());
