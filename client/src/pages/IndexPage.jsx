@@ -56,7 +56,7 @@ export default function IndexPage() {
   return (
     <div className="index-page-wrapper">
       <div className="title-wrapper">
-        <img src={sean} className="title-photo"></img>
+        <img src={sean} alt="sean" className="title-photo"></img>
         <h1>SIC</h1> 
       </div>
 
