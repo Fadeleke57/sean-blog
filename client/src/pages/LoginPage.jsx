@@ -21,7 +21,6 @@ export default function LoginPage() {
             body: JSON.stringify({ username, password }),
             headers: { 'Content-Type': 'application/json' },
             credentials: 'include',
-            mode: 'no-cors'
         });
         if (response.ok) {
             const userInfo = await response.json();
