@@ -20,7 +20,7 @@ img {
 }
 
 main {
-  padding: 5em 5em 0em 5em;
+  padding: 5em 8em 0em 8em;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -28,6 +28,7 @@ main {
   align-items: center;
   min-height: 100vh;
   gap: 2em;
+
 }
 
 footer {

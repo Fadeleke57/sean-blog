@@ -15,6 +15,11 @@ function FilterBar({setTag}) {
     setTag(choice.name)
   }
 
+  function handleSelectChange(event) {
+    const selectedChoice = choices.find(choice => choice.id === parseInt(event.target.value));
+    onClick(selectedChoice);
+  }
+
   return (
     <div className="filter-bar">
         <div className='bar-wrapper'>
@@ -29,7 +34,7 @@ function FilterBar({setTag}) {
           ))}
         </div> 
         <div className='select-wrapper'>
-          <select>
+          <select onChange={handleSelectChange} value={active}>
             {choices.map((choice, id) => (
               <option value={choice.id} key={id}>
                 {choice.name}

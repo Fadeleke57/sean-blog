@@ -10,6 +10,7 @@ import PostPage from './pages/PostPage';
 import EditPost from './pages/EditPost';
 
 import { UserProvider } from './UserContext';
+import SearchPage from './components/SearchPage';
 
 function App() {
   
@@ -23,6 +24,7 @@ function App() {
             <Route path="/create" element={<CreatePost />} />            
             <Route path="/post/:id" element={<PostPage />} />
             <Route path="/edit/:id" element={<EditPost />} />
+            <Route path="/search" element={<SearchPage/>} />
           </Route>
         </Routes>
       </UserProvider>

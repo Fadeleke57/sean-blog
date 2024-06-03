@@ -49,7 +49,7 @@ form.create {
     box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
 }
 
-button {
+.create-wrapper button {
     cursor: pointer;
     width: 100%;
     display: block;

@@ -11,6 +11,8 @@ export default function IndexPage() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true)
   const [tag, setTag] = useState('All')
+  const [currentPage, setCurrentPage] = useState(1);
+  const postsPerPage = 4;
 
   useEffect(() => {
     fetch('http://localhost:4000/post').then(response => {
@@ -33,6 +35,24 @@ export default function IndexPage() {
     )
   }
 
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+
+  const totalPages = Math.ceil(posts.length / postsPerPage);
+
+  const handleNextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const handlePreviousPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
   return (
     <div className="index-page-wrapper">
       <div className="title-wrapper">
@@ -48,13 +68,25 @@ export default function IndexPage() {
       </div>
 
       <div className="content-wrapper">
-        {posts.length > 0 && posts.map((post, id) => (
+        {currentPosts.length > 0 && currentPosts.map((post, id) => (
           <Link className="post-wrapper" to={`/post/${post._id}`} key={id}> 
             <Post key={id} {...post}/>
           </Link>
         ))}
       </div>
-
+      <div className='search-pagination' style={{marginTop: '4em'}}>
+        <p style={{marginRight: '1em'}}>{currentPosts.length > 0 ? `${indexOfFirstPost + 1} - ${Math.min(indexOfLastPost, posts.length)} of ${posts.length} results` : `0 results`}</p>
+        <button onClick={handlePreviousPage} disabled={currentPage === 1}>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6" >
+                <path strokeLinecap="round" strokeLinejoin="round" d="m11.25 9-3 3m0 0 3 3m-3-3h7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+        </button>
+        <button onClick={handleNextPage} disabled={currentPage === totalPages}>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6" >
+                <path strokeLinecap="round" strokeLinejoin="round" d="m12.75 15 3-3m0 0-3-3m3 3h-7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            </svg>
+        </button>
+      </div>
     </div>
 
   );

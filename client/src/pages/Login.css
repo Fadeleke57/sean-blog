@@ -30,7 +30,7 @@ form.login, form.register {
     box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
   }
 
-  button {
+  .login-wrapper button {
     cursor: pointer;
     width: 100%;
     display: block;

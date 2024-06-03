@@ -1,0 +1,145 @@
+.search-page-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    margin: 0 auto;
+    min-height: 70vh;
+    font-family: "Hanken Grotesk", sans-serif;
+}
+
+.search-info-header svg {
+    height: 20px;
+}
+
+.search-page-wrapper a {
+    text-decoration: none;
+    color: #525252;
+}
+
+.search-header {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: -2em;
+}
+
+.search-header h1 {
+    font-size: 6em;
+}
+
+
+
+.escape-button {
+    border-radius: 100%;
+    transition: 0.2s ease-in-out;
+    padding: 1em;
+    cursor: pointer;
+}
+
+.search-input-wrapper svg {
+    height: 20px;
+}
+
+.search-input-wrapper {
+    width: 100%;
+    border-radius: .7em;
+    display: flex;
+    align-items: center;
+    border: 2px solid #b3b3b3;
+    padding-left: 1em;
+    transition: border 0.15s ease, box-shadow 0.15s ease;
+}
+
+.search-input-wrapper:hover {
+    box-shadow: 0 0px 10px rgb(31, 136, 197);
+}
+
+.search-input-wrapper.active {
+    box-shadow: 0 0px 10px rgb(31, 136, 197)
+}
+
+.search-input-wrapper input {
+    width: 100%;
+    border-radius: .7em;
+    border: 2px dotted green;
+    font-size: 1.3em;
+    padding: 1em .5em;
+    color: black;
+    border: none;
+}
+
+.search-input-wrapper input:focus {
+    outline: none;
+}
+
+.search-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.search-info-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: rgb(31, 136, 197);
+}
+
+.pagination {
+    border: 2px dotted red;
+}
+
+.search-info-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 1.5em;
+    column-gap: 4em;
+}
+
+.search-info-content-title {
+    font-weight: bold;
+    margin-bottom: .3em;
+    font-size: 1.2em;
+    color: black;
+}
+
+.search-info-content-subititle {
+    color: #888686;
+    font-size: 1em;
+}
+
+.search-info-content div {
+    border-radius: 1em;
+}
+
+.search-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-pagination svg{
+    height: 45px;
+}
+
+.search-pagination button {
+    border-radius: 100%;
+    border: none;
+    background-color: transparent;
+    color: black;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+
+  .search-pagination button:disabled svg {
+    cursor: not-allowed;
+    stroke: #888686;
+  }
+  
+  .search-pagination button:not(:disabled) svg:hover {
+    fill: rgb(31, 136, 197)
+  }
