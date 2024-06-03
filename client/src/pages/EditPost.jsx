@@ -116,12 +116,14 @@ export default function EditPost() {
             type="text"
             placeholder="Title"
             value={title}
+            maxLength={71}
             onChange={(e) => setTitle(e.target.value)}
           />
           <input
             type="text"
             placeholder="Summary"
             value={summary}
+            maxLength={220}
             onChange={(e) => setSummary(e.target.value)}
           />
           <input

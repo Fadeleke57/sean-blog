@@ -7,7 +7,7 @@ function SearchPage() {
   const [active, setActive] = useState(false);
   const [query, setQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const postsPerPage = 5;
+  const postsPerPage = 4;
   const searchInputWrapperRef = useRef(null);
 
   const escapeIcon = (
@@ -119,7 +119,7 @@ function SearchPage() {
         <div className='search-info-content'>
           {currentPosts.length > 0 ? (
             currentPosts.map(post => (
-              <Link key={post._id}>
+              <Link key={post._id} to={`/post/${post._id}`}>
                 <div>
                   <p className='search-info-content-title'>{getHighlightedText(post.title, query)}</p>
                   <p className='search-info-content-subtitle'>{getHighlightedText(post.summary, query)}</p>

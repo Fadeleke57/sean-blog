@@ -80,7 +80,8 @@ div.post p.summary {
 }
 
 .post-date {
-  color: #737a80
+  color: #737a80;
+  margin-left: -.4em;
 }
 
 @media screen and (max-width: 950px) {

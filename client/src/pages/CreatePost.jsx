@@ -81,12 +81,14 @@ export default function CreatePost() {
           <input
             type="text"
             placeholder="Title"
+            maxLength={71}
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
           <input
             type="text"
             placeholder="Summary"
+            maxLength={220}
             value={summary}
             onChange={(e) => setSummary(e.target.value)}
           />
