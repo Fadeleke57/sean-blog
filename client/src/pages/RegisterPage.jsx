@@ -7,7 +7,7 @@ export default function RegisterPage() {
 
     async function register(e) {
         e.preventDefault();
-        const response = await fetch('https://sean-blog-server.onrender.com/register', {
+        const response = await fetch(`${process.env.REACT_APP_BASE_URL}/register`, {
             method: 'POST',
             body: JSON.stringify({username, password}),
             headers: {'Content-Type': 'application/json'} 

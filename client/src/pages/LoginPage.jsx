@@ -16,7 +16,7 @@ export default function LoginPage() {
 
     async function login(e) {
         e.preventDefault();
-        const response = await fetch('https://sean-blog-server.onrender.com/login', {
+        const response = await fetch(`${process.env.REACT_APP_BASE_URL}/login`, {
             method: 'POST',
             body: JSON.stringify({ username, password }),
             headers: { 'Content-Type': 'application/json' },

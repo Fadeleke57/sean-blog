@@ -12,7 +12,7 @@ export default function EditPost() {
   const [redirect, setRedirect] = useState(false);
 
   useEffect(() => {
-    fetch('https://sean-blog-server.onrender.com/post/' + id)
+    fetch(`${process.env.BASE_URL}/post/` + id)
       .then(response => {
         response.json().then(postInfo => {
           setCategory(postInfo.category)
@@ -46,7 +46,7 @@ export default function EditPost() {
   
     //console.log('Token:', token);
   
-    const response = await fetch('https://sean-blog-server.onrender.com/post', {
+    const response = await fetch(`${process.env.REACT_APP_BASE_URL}/post`, {
       method: 'PUT',
       body: data,
       credentials: 'include'

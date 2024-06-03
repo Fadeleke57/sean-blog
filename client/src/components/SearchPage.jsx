@@ -22,7 +22,7 @@ function SearchPage() {
   );
 
   useEffect(() => {
-    fetch('https://sean-blog-server.onrender.com/post').then(response => {
+    fetch(`${process.env.REACT_APP_BASE_URL}/post`).then(response => {
       response.json().then((posts) => {
         setPosts(posts);
       });

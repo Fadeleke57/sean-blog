@@ -23,7 +23,7 @@ export default function CreatePost() {
       data.append('file', files[0]);
     }
 
-    await fetch('https://sean-blog-server.onrender.com/post', {
+    await fetch(`${process.env.REACT_APP_BASE_URL}/post`, {
       method: 'POST',
       body: data,
       credentials: 'include',

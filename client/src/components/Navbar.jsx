@@ -39,7 +39,7 @@ function Navbar() {
   const { userInfo, setUserInfo } = context;
 
   useEffect(() => {
-    fetch('https://sean-blog-server.onrender.com/profile', {
+    fetch(`${process.env.REACT_APP_BASE_URL}/profile`, {
       credentials: 'include',
     }).then(response => {
       response.json().then(userInfo => {
@@ -49,7 +49,7 @@ function Navbar() {
   }, [setUserInfo]);
 
   function logout() {
-    fetch('https://sean-blog-server.onrender.com/logout', {
+    fetch(`${process.env.REACT_APP_BASE_URL}/logout`, {
       credentials: 'include',
       method: 'POST',
     })
