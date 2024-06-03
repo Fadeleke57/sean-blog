@@ -7,7 +7,10 @@ const cookieParser = require('cookie-parser');
 const configureMiddleware = (app) => {
   const allowedOrigins = ['http://localhost:3000', 'https://repop-blog.vercel.app', 'https://repop-blog-server.onrender.com', 'https://sic-kappa.vercel.app', 'https://sean-blog-server.onrender.com'];
 
-  app.use(cors());
+  app.use(cors({
+    credentials: true,
+    origin: true
+  }));
     
   app.use(express.json());
   app.use(cookieParser());
