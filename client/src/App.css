@@ -20,7 +20,7 @@ img {
 }
 
 main {
-  padding: 5em 5em 0 5em;
+  padding: 5em 5em 0em 5em;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -43,6 +43,13 @@ footer {
 footer h2 {
   text-align: center;
   font-size: 1.4em;
+}
+
+.loader-wrapper {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @media screen and (max-width: 1030px) {

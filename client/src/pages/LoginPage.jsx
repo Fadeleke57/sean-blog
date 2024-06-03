@@ -36,8 +36,9 @@ export default function LoginPage() {
     }
 
     return (
+        <div className="login-wrapper">
         <form className="login" onSubmit={login}>
-            <h1>Login</h1>
+            <h1>Admin Login</h1>
             <input
                 type="text"
                 placeholder="username"
@@ -52,5 +53,7 @@ export default function LoginPage() {
             />
             <button>Login</button>
         </form>
+        </div>
+
     );
 }

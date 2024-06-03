@@ -64,7 +64,7 @@ function Navbar() {
         <nav className={`${styles.navbar} ${showNav ? styles.visible : styles.hidden}`}>
             <div className={styles.container}>
 
-                <Link to={'/'} className={styles.brand} style={{color: 'black'}} onClick={() => closeTab()}>{username ? `Hello ${username}!`: 'FernIt'}</Link>
+                <Link to={'/'} className={styles.brand} style={{color: 'black'}} onClick={() => closeTab()}>{username ? `Hello ${username}!`: 'SIC - Blog'}</Link>
 
                 <div className={menuOpen ? styles.menu_open : styles.menu}> {/* if authorized user then display user menu */}
 
@@ -75,8 +75,7 @@ function Navbar() {
                     </ul>
                     ) : (
                     <ul>
-                        <li><Link to="/login" onClick={() => closeTab()}>Login</Link></li>
-                        <li><Link to="/register" onClick={() => closeTab()}>Register</Link></li>
+                        <li><Link to="/login" onClick={() => closeTab()}>Admin</Link></li>
                     </ul>
                     )}
 

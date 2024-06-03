@@ -82,7 +82,7 @@ export default function PostPage() {
 
         <div className='post-page-content-row1'>
           <div className='image'>
-            <img src={`https://repop-blog-server.onrender.com/${postInfo.cover}`} alt='Post cover' />
+            <img src={`http://localhost:4000/${postInfo.cover}`} alt='Post cover' />
           </div>
           <div className='post-page-content' dangerouslySetInnerHTML={{ __html: postInfo.content }}>
           </div>
@@ -92,16 +92,13 @@ export default function PostPage() {
           <div className='post-page-sticky'>
             <div className='post-page-author-wrapper'>
               <span>Author</span>
-              <p>{postInfo.author.username}</p>
-              <small>Ceo and Co-Founder</small>
+              <p>Sean Cummings</p>
+              <small>Big Finance Guy</small>
             </div>
             <div className='post-page-tag-wrapper'>
               <span>Tagged</span>
               <div className='post-page-tags'>
-                <p>Company</p>
-                <p>Sustainability</p>
-                <p>Energy</p>
-                <p>Stuff</p>
+                <p>Finance</p>
               </div>  
             </div>
             <div className='post-page-share'>

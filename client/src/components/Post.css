@@ -1,34 +1,18 @@
 div.post {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   border-radius: 1em;
 }
 
-div.post div.image {
-  width: 100%;
-  height: 400px;
-  overflow: hidden;
-  margin: 0 auto;
-  border-top-left-radius: 1em;
-  border-top-right-radius: 1em;
-}
-
-div.post div.image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-
 div.post div.image2 {
-  width: 100%;
-  height: 200px;
+  width: 40%;
+  height: 208px;
   overflow: hidden;
   margin: 0 auto;
   border-top-left-radius: 1em;
-  border-top-right-radius: 1em;
+  border-bottom-left-radius: 1em;
 }
 
 div.post div.image2 img {
@@ -46,7 +30,7 @@ div.post div.texts {
 }
 
 span.post-tag {
-  color: #575cff;
+  color: #1f88c5;
   font-family: "Roboto Mono", monospace;
   font-size: 12px;
   font-weight: 900;
@@ -74,6 +58,7 @@ a.post-link  {
 .info {
   position: absolute;
   bottom: .2em;
+  right: 3em;
   line-height: 18px;
   size: 10px;
   font-weight: 400;

@@ -5,9 +5,9 @@ function FilterBar() {
 
   const choices = [
     { id: 1, name: "All"},
-    { id: 2, name: "Company"},
-    { id: 3, name: "Sustainability"},
-    { id: 4, name: "Economy" },
+    { id: 2, name: "Finance"},
+    { id: 3, name: "IR"},
+    { id: 4, name: "Personal" },
   ]
  
   function onClick(id) {

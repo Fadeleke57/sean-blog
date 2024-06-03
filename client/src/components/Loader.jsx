@@ -1,16 +1,19 @@
 import React from 'react';
-import { miyagi } from 'ldrs'
+import { chaoticOrbit } from 'ldrs'
 
-miyagi.register()
+chaoticOrbit.register()
 
+// Default values shown
 function Loader() {
   return (
-    <l-miyagi
-    size="150"
-    stroke="7"
-    speed="0.9" 
-    color="black" 
-    ></l-miyagi>
+    <div className='loader-wrapper'>
+      <l-chaotic-orbit
+        size="150"
+        speed="1.5" 
+        color="black" 
+      ></l-chaotic-orbit>
+    </div>
+
   )
 }
 

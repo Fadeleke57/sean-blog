@@ -1,3 +1,25 @@
+.index-page-wrapper {
+  width: 100%;
+}
+
+.title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  flex-direction: row;
+}
+
+.title-photo {
+  border-radius: 100%;
+  width: 100px;
+  height: 100px;
+}
+
+.title-photo:hover {
+  filter: grayscale(1);
+  cursor: pointer;
+}
+
 .title-wrapper h1 {
   font-size: 74px;
   font-family: "Hanken Grotesk", sans-serif;
@@ -17,16 +39,6 @@
   gap: 2em;
   grid-template-columns: 1fr 1fr;
 }
-  
-.utility-links {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2em;
-}
-
-.utility-links div {
-  background-color: #EDEDED;
-}
 
 .featured-post {
   align-self: flex-start;
@@ -43,6 +55,7 @@
   
 .search-wrapper, div.filter-wrapper, div.featured-post {
   border-radius: 1em;
+  background-color: #EDEDED;
 }
 
 .utility-button {
@@ -56,6 +69,7 @@
   text-decoration: none;
   cursor: pointer;
   width: 100%;
+  height: 100%;
 }
 
 .filter-bar {
@@ -64,7 +78,6 @@
   justify-content: center;
   width: 100%;
   background-color: #EDEDED;
-  margin-top: 3em;
   height: 3.9em;
   font-family: "Hanken Grotesk", sans-serif;
   border-radius: 1em;
@@ -73,7 +86,6 @@
 .filter-bar p {
   display: inline-block;
   padding: 1em;
-  font-weight: bold;
   color: #686868;
 }
 
@@ -117,20 +129,20 @@
 }
 
 .filter-bar p:hover {
-  color: #575cff;
+  color: #1f88c5;
   cursor: pointer;
-  border-bottom: 4px solid #686868;
+  border-bottom: 4px solid #1f88c5
 }
 
 .filter-bar p.active {
-  color: #575cff;
+  color: #1f88c5;
   cursor: pointer;
-  border-bottom: 4px solid #686868;
+  border-bottom: 4px solid #1f88c5;
 }
 
 .content-wrapper {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr;
   gap: 2em;
   margin-top: 2em;
 }
@@ -138,7 +150,7 @@
 .post-wrapper {
   position: relative;
   border-radius: 1em;
-  height: 90vh;
+  height: 30vh;
   transition: transform 0.3s ease;
   text-decoration: none;
   background-color: #EDEDED;
@@ -151,11 +163,10 @@
 }
 
 .post-wrapper:hover, 
-.featured-post:hover,
 .ni-wrapper:hover {
   cursor: pointer;
-  box-shadow: 10px 10px #575cff;
-  transform: translate(-20px, -20px);
+  box-shadow: 5px 5px #dbdbdb;
+  transform: translate(-5px, -5px);
 }
 
 .featured-content-wrapper a, .content-wrapper a {
@@ -183,13 +194,6 @@
   .content-wrapper {
     grid-template-columns: 1fr 1fr;
     gap: 1em;
-  }
-  .post-wrapper:hover, 
-  .featured-post:hover,
-  .ni-wrapper:hover {
-    cursor: pointer;
-    box-shadow: 10px 10px #575cff;
-    transform: translate(-10px, -10px);
   }
 }
 
