@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './Footer.module.css'
-import {Link} from 'react-router-dom'
 
 function Footer() {
   return (
@@ -10,7 +9,7 @@ function Footer() {
       <div className={styles.footer_bottom}>
         <div className={styles.container}>
           <p>
-            © 2024 SIC, Inc. - All rights reserved.
+            © 2024 SIC - All rights reserved.
           </p>
         </div>
       </div>

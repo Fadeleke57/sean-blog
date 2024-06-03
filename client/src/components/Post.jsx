@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 import { formatDistanceToNow } from 'date-fns';
 import './Post.css'
 
-export default function Post({_id, title, summary, cover, content, author, createdAt}) {
+export default function Post({_id, category, title, summary, cover, content, author, createdAt}) {
 
   return (
     <Link className="post-link" to={`/post/${_id}`}>
@@ -13,7 +13,7 @@ export default function Post({_id, title, summary, cover, content, author, creat
         </div>
         <div className="texts">
           <div>
-            <span className="post-tag"><h3>Finance</h3></span><br/>
+            <span className="post-tag"><h3>{category}</h3></span><br/>
             <h2 className="post-title">{title}</h2>
             <p className="summary">{summary}</p> 
               <small className="info">

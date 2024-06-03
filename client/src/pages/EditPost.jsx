@@ -8,12 +8,14 @@ export default function EditPost() {
   const [summary, setSummary] = useState('');
   const [content, setContent] = useState('');
   const [files, setFiles] = useState(null);
+  const [category, setCategory] = useState('');
   const [redirect, setRedirect] = useState(false);
 
   useEffect(() => {
     fetch('http://localhost:4000/post/' + id)
       .then(response => {
         response.json().then(postInfo => {
+          setCategory(postInfo.category)
           setTitle(postInfo.title);
           setContent(postInfo.content);
           setSummary(postInfo.summary);
@@ -24,6 +26,7 @@ export default function EditPost() {
   async function updatePost(ev) {
     ev.preventDefault();
     const data = new FormData();
+    data.set('category', category)
     data.set('title', title);
     data.set('summary', summary);
     data.set('content', content);
@@ -64,30 +67,72 @@ export default function EditPost() {
       }
     }
 
+  const handleCategoryChange = (e) => {
+    setCategory(e.target.value);
+  };
+
   if (redirect) {
     return <Navigate to={'/post/' + id} />
   }
 
   return (
-    <form onSubmit={updatePost}>
-      <input
-        type="text"
-        placeholder="Title"
-        value={title}
-        onChange={ev => setTitle(ev.target.value)}
-      />
-      <input
-        type="text"
-        placeholder="Summary"
-        value={summary}
-        onChange={ev => setSummary(ev.target.value)}
-      />
-      <input
-        type="file"
-        onChange={(ev) => setFiles(ev.target.files)}
-      />
-      <Editor onChange={setContent} value={content} />
-      <button style={{ marginTop: '5px' }}>Update post</button>
-    </form>
+    <div className="create-wrapper">
+      <form onSubmit={updatePost} className="create">
+        <h1>Edit Post</h1>
+        <div className='create-tag-options'>
+          <label>
+              <input
+                type="radio"
+                name="category"
+                value="Personal"
+                checked={category === 'Personal'}
+                onChange={handleCategoryChange}
+              />
+              Personal
+            </label>
+            <label>
+              <input
+                type="radio"
+                name="category"
+                value="Finance"
+                checked={category === 'Finance'}
+                onChange={handleCategoryChange}
+              />
+              Finance
+            </label>
+            <label style={{marginRight: '0em'}}>
+              <input
+                type="radio"
+                name="category"
+                value="IR"
+                checked={category === 'IR'}
+                onChange={handleCategoryChange}
+              />
+              IR
+          </label>
+        </div>
+        <div className='create-text-inputs'>
+          <input
+            type="text"
+            placeholder="Title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="Summary"
+            value={summary}
+            onChange={(e) => setSummary(e.target.value)}
+          />
+          <input
+            type="file"
+            onChange={(e) => setFiles(e.target.files)}
+          />
+          <Editor value={content} onChange={setContent} />
+        </div>
+        <button style={{ marginTop: '5px' }}>Update post</button>
+      </form>
+    </div>
+
   );
 }

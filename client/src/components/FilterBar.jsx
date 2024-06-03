@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 
-function FilterBar() {
+function FilterBar({setTag}) {
   const [active, setActive] = useState(1)
 
   const choices = [
@@ -10,8 +10,9 @@ function FilterBar() {
     { id: 4, name: "Personal" },
   ]
  
-  function onClick(id) {
-    setActive(id)
+  function onClick(choice) {
+    setActive(choice.id)
+    setTag(choice.name)
   }
 
   return (
@@ -21,7 +22,7 @@ function FilterBar() {
             <p
               key={id}
               className={active === choice.id ? "active" : ""}
-              onClick={() => onClick(choice.id)}
+              onClick={() => onClick(choice)}
             >
               {choice.name}
             </p>

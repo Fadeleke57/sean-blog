@@ -1,16 +1,18 @@
 .login-wrapper {
-  height: 70vh;
+  min-height: 70vh;
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 80%;
 }
 
 form.login, form.register {
     width: 800px;
     margin: 0 auto;
   }
-  
-  input {
+
+
+ .login-wrapper input {
     display: block;
     margin-bottom: 10px;
     width: 100%;
@@ -22,12 +24,12 @@ form.login, form.register {
     transition: 0.15s ease;
   }
 
-  input:focus {
+  .login-wrapper input:focus {
     outline: none;
     border: 3px solid #1f88c5;
     box-shadow: 0 0 5px rgba(74, 144, 226, 0.5);
   }
-  
+
   button {
     cursor: pointer;
     width: 100%;

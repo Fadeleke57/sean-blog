@@ -47,7 +47,7 @@ export default function PostPage() {
     <div className='post-page'>
 
       <div className='post-page-info'>
-          <div><span className='post-page-tag'>Company -</span></div>
+          <div><span className='post-page-tag'>{postInfo.category} -</span></div>
           <div><span className='post-page-date'>{format(new Date(postInfo.createdAt), 'MMMM d, yyyy h:mma')}</span></div>
         </div>
 
@@ -98,7 +98,7 @@ export default function PostPage() {
             <div className='post-page-tag-wrapper'>
               <span>Tagged</span>
               <div className='post-page-tags'>
-                <p>Finance</p>
+                <p>{postInfo.category}</p>
               </div>  
             </div>
             <div className='post-page-share'>

@@ -10,15 +10,22 @@ import sean from '../images/sean.jpg'
 export default function IndexPage() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true)
+  const [tag, setTag] = useState('All')
 
   useEffect(() => {
     fetch('http://localhost:4000/post').then(response => {
       response.json().then((posts) => {
-        setPosts(posts);
+        if (tag === 'All') {
+          setPosts(posts);
+        }
+        else {
+          const filteredPosts = posts.filter(post => post.category === tag)
+          setPosts(filteredPosts)
+        }
         setLoading(false)
       });
     });
-  }, []);
+  }, [tag]);
 
   if (loading) {
     return (
@@ -34,7 +41,7 @@ export default function IndexPage() {
       </div>
 
       <div className="subtitle-wrapper">
-        <FilterBar/>
+        <FilterBar setTag={setTag}/>
         <div className="search-wrapper" >
           <UtilityButton icon="search">Search</UtilityButton>
         </div>
