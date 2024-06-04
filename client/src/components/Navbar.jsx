@@ -67,7 +67,6 @@ function Navbar() {
                 <Link to={'/'} className={styles.brand} style={{color: 'black'}} onClick={() => closeTab()}>{username ? `Hello ${username}!`: 'SIC - Blog'}</Link>
 
                 <div className={menuOpen ? styles.menu_open : styles.menu}> {/* if authorized user then display user menu */}
-
                     {username ? (
                     <ul>
                         <li><Link to="/create" onClick={() => closeTab()}>Create New Post</Link></li>
@@ -78,7 +77,6 @@ function Navbar() {
                         <li><Link to="/login" onClick={() => closeTab()}>Admin</Link></li>
                     </ul>
                     )}
-
                 </div>
 
                 <div className={styles.menu_btn}>
