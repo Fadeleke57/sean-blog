@@ -9,12 +9,16 @@ const router = express.Router();
 const secret = process.env.REACT_APP_SECRET_HASH;
 
 router.post('/post', uploadMiddleware.single('file'), async (req, res) => { //create a post
-  const { originalname, path } = req.file;
-  const parts = originalname.split('.');
-  const ext = parts[parts.length - 1];
-  const newPath = path + '.' + ext;
-  fs.renameSync(path, newPath);
-
+  if (req.file) {
+      const { originalname, path } = req.file;
+      const parts = originalname.split('.');
+      const ext = parts[parts.length - 1];
+      const newPath = path + '.' + ext;
+      fs.renameSync(path, newPath);
+  }
+  else {
+      alert('PLEASE ATTACH AN IMAGE FILE')
+  }
   const { token } = req.cookies;
   jwt.verify(token, secret, {}, async (err, info) => {
     if (err) throw err;
