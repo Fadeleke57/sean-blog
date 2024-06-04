@@ -36,6 +36,10 @@ router.post('/post', uploadMiddleware.single('file'), async (req, res) => { //cr
 });
 
 router.get('/post', async (req, res) => { //get posts
+  res.setHeader('Access-Control-Allow-Origin', 'https://sean-blog-7zp3.onrender.com'); // Or specify a particular origin instead of '*'
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE'); // Add other methods as needed
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
   const posts = await Post.find()
     .populate('author', ['username'])
     .sort({ createdAt: -1 })
@@ -60,6 +64,8 @@ router.put('/post', uploadMiddleware.single('file'), async (req, res) => { //edi
   }
 
   const { token } = req.cookies;
+  console.log(token)
+
   if (!token) {
     return res.status(401).json({ error: 'Authentication token is missing' });
   }
