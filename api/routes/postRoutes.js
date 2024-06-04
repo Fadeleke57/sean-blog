@@ -9,16 +9,14 @@ const router = express.Router();
 const secret = process.env.REACT_APP_SECRET_HASH;
 
 router.post('/post', uploadMiddleware.single('file'), async (req, res) => { //create a post
-  res.setHeader('Access-Control-Allow-Origin', 'https://sean-blog-7zp3.onrender.com'); // Or specify a particular origin instead of '*'
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE'); // Add other methods as needed
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
   const { originalname, path } = req.file;
   const parts = originalname.split('.');
   const ext = parts[parts.length - 1];
   const newPath = path + '.' + ext;
   fs.renameSync(path, newPath);
-  const { token } = req.cookies;
+  //const { token } = req.cookies;
+  token = 'token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlNlYW4iLCJpZCI6IjY2NWNlZGQwZWFiNWIxMWM5NGYxN2EzOSIsImlhdCI6MTcxNzUyNzMzMn0.BgylBjLDHekIKYfpCkoHUSt6snXoHar7Jwey997vXf0'
   jwt.verify(token, secret, {}, async (err, info) => {
     if (err) throw err;
 
@@ -36,9 +34,6 @@ router.post('/post', uploadMiddleware.single('file'), async (req, res) => { //cr
 });
 
 router.get('/post', async (req, res) => { //get posts
-  res.setHeader('Access-Control-Allow-Origin', 'https://sean-blog-7zp3.onrender.com'); // Or specify a particular origin instead of '*'
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE'); // Add other methods as needed
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
   const posts = await Post.find()
     .populate('author', ['username'])
@@ -49,9 +44,6 @@ router.get('/post', async (req, res) => { //get posts
 });
 
 router.put('/post', uploadMiddleware.single('file'), async (req, res) => { //edit posts
-  res.setHeader('Access-Control-Allow-Origin', 'https://sean-blog-7zp3.onrender.com'); // Or specify a particular origin instead of '*'
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE'); // Add other methods as needed
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
   let newPath = null;
 
