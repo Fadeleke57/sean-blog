@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import './SearchPage.css';
+import Loader from './Loader';
 import { Link } from 'react-router-dom';
 
 function SearchPage() {
@@ -7,6 +8,7 @@ function SearchPage() {
   const [active, setActive] = useState(false);
   const [query, setQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
+  const [loading, setLoading] = useState(true)
   const postsPerPage = 4;
   const searchInputWrapperRef = useRef(null);
 
@@ -25,6 +27,7 @@ function SearchPage() {
     fetch(`${process.env.REACT_APP_BASE_URL}/post`).then(response => {
       response.json().then((posts) => {
         setPosts(posts);
+        setLoading(false)
       });
     });
   }, []);
@@ -79,6 +82,14 @@ function SearchPage() {
       setCurrentPage(currentPage - 1);
     }
   };
+
+  if (loading) {
+    return (
+      <>
+        <Loader></Loader>
+      </>
+    )
+  }
 
   return (
     <div className='search-page-wrapper'>

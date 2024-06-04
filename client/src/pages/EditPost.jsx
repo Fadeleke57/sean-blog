@@ -35,7 +35,7 @@ export default function EditPost() {
       data.append('file', files[0]);
     }
     // Debugging: Print out all cookies
-    //console.log('Document Cookies:', document.cookie);
+    console.log('Document Cookies:', document.cookie);
 
     ///const tokenCookie = document.cookie
     //if (!tokenCookie) {
@@ -52,20 +52,20 @@ export default function EditPost() {
       credentials: 'include'
     });
     
-      if (response.ok) {
-        setRedirect(true);
+    if (response.ok) {
+      setRedirect(true);
+    } else {
+      // Check if the response is JSON or plain text
+      const contentType = response.headers.get('content-type');
+      if (contentType && contentType.includes('application/json')) {
+        const errorData = await response.json();
+        console.error('Error updating post:', errorData);
       } else {
-        // Check if the response is JSON or plain text
-        const contentType = response.headers.get('content-type');
-        if (contentType && contentType.includes('application/json')) {
-          const errorData = await response.json();
-          console.error('Error updating post:', errorData);
-        } else {
-          const errorText = await response.text();
-          console.error('Error updating post:', errorText);
-        }
+        const errorText = await response.text();
+        console.error('Error updating post:', errorText);
       }
     }
+  }
 
   const handleCategoryChange = (e) => {
     setCategory(e.target.value);
