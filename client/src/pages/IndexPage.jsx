@@ -17,17 +17,11 @@ export default function IndexPage() {
   useEffect(() => {
     fetch(`${process.env.REACT_APP_BASE_URL}/post`).then(response => {
       response.json().then((posts) => {
-        if (tag === 'All') {
-          setPosts(posts);
-        }
-        else {
-          const filteredPosts = posts.filter(post => post.category === tag)
-          setPosts(filteredPosts)
-        }
+        setPosts(posts);
         setLoading(false)
       });
     });
-  }, [tag]);
+  }, []);
 
   if (loading) {
     return (
@@ -35,11 +29,19 @@ export default function IndexPage() {
     )
   }
 
+  var filteredPosts;
+  if (tag === 'All') {
+    filteredPosts = posts
+  }
+  else {
+    filteredPosts = posts.filter(post => post.category === tag)
+  }
+  
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
+  const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
 
-  const totalPages = Math.ceil(posts.length / postsPerPage);
+  const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
 
   const handleNextPage = () => {
     if (currentPage < totalPages) {
@@ -75,7 +77,7 @@ export default function IndexPage() {
         ))}
       </div>
       <div className='search-pagination' style={{marginTop: '4em'}}>
-        <p style={{marginRight: '1em'}}>{currentPosts.length > 0 ? `${indexOfFirstPost + 1} - ${Math.min(indexOfLastPost, posts.length)} of ${posts.length} results` : `0 results`}</p>
+        <p style={{marginRight: '1em'}}>{filteredPosts.length > 0 ? `${indexOfFirstPost + 1} - ${Math.min(indexOfLastPost, filteredPosts.length)} of ${filteredPosts.length} results` : `0 results`}</p>
         <button onClick={handlePreviousPage} disabled={currentPage === 1}>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6" >
                 <path strokeLinecap="round" strokeLinejoin="round" d="m11.25 9-3 3m0 0 3 3m-3-3h7.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
