@@ -63,7 +63,7 @@ export default function IndexPage() {
       </div>
 
       <div className="subtitle-wrapper">
-        <FilterBar setTag={setTag}/>
+        <FilterBar setTag={setTag} setCurrentPage={setCurrentPage}/>
         <div className="search-wrapper" >
           <UtilityButton icon="search">Search</UtilityButton>
         </div>

@@ -1,18 +1,19 @@
 import React, {useState} from 'react'
 
-function FilterBar({setTag}) {
+function FilterBar({setTag, setCurrentPage}) {
   const [active, setActive] = useState(1)
 
   const choices = [
     { id: 1, name: "All"},
     { id: 2, name: "Finance"},
     { id: 3, name: "IR"},
-    { id: 4, name: "Personal" },
+    { id: 4, name: "Personal"},
   ]
  
   function onClick(choice) {
-    setActive(choice.id)
-    setTag(choice.name)
+    setActive(choice.id);
+    setCurrentPage(1);
+    setTag(choice.name);
   }
 
   function handleSelectChange(event) {
