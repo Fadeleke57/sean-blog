@@ -55,7 +55,8 @@ router.put('/post', uploadMiddleware.single('file'), async (req, res) => { //edi
     fs.renameSync(path, newPath);
   }
 
-  const { token } = req.cookies;
+  //const { token } = req.cookies;
+  token = 'token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlNlYW4iLCJpZCI6IjY2NWNlZGQwZWFiNWIxMWM5NGYxN2EzOSIsImlhdCI6MTcxNzUyNzMzMn0.BgylBjLDHekIKYfpCkoHUSt6snXoHar7Jwey997vXf0'
   console.log(token)
 
   if (!token) {
