@@ -9,16 +9,15 @@ const router = express.Router();
 const secret = process.env.REACT_APP_SECRET_HASH;
 
 router.post('/post', uploadMiddleware.single('file'), async (req, res) => { //create a post
-  if (req.file) {
-      const { originalname, path } = req.file;
-      const parts = originalname.split('.');
-      const ext = parts[parts.length - 1];
-      const newPath = path + '.' + ext;
-      fs.renameSync(path, newPath);
-  }
-  else {
-      alert('PLEASE ATTACH AN IMAGE FILE')
-  }
+  res.setHeader('Access-Control-Allow-Origin', 'https://sean-blog-7zp3.onrender.com'); // Or specify a particular origin instead of '*'
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE'); // Add other methods as needed
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
+  const { originalname, path } = req.file;
+  const parts = originalname.split('.');
+  const ext = parts[parts.length - 1];
+  const newPath = path + '.' + ext;
+  fs.renameSync(path, newPath);
   const { token } = req.cookies;
   jwt.verify(token, secret, {}, async (err, info) => {
     if (err) throw err;
@@ -46,6 +45,10 @@ router.get('/post', async (req, res) => { //get posts
 });
 
 router.put('/post', uploadMiddleware.single('file'), async (req, res) => { //edit posts
+  res.setHeader('Access-Control-Allow-Origin', 'https://sean-blog-7zp3.onrender.com'); // Or specify a particular origin instead of '*'
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE'); // Add other methods as needed
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
   let newPath = null;
 
   if (req.file) {
