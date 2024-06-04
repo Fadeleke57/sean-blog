@@ -26,8 +26,7 @@ export default function CreatePost() {
     await fetch(`${process.env.REACT_APP_BASE_URL}/post`, {
       method: 'POST',
       body: data,
-      credentials: 'include',
-      mode: 'no-cors'
+      credentials: 'include'
     });
 
     setRedirect(true);
