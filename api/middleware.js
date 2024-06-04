@@ -5,7 +5,7 @@ const cookieParser = require('cookie-parser');
 //const uploadMiddleware = multer({ dest: 'uploads/' });
 
 const configureMiddleware = (app) => {
-  const allowedOrigins = ['http://localhost:3000', 'https://sic-kappa.vercel.app'];
+  const allowedOrigins = ['http://localhost:3000', 'https://sic-kappa.vercel.app', 'https://sean-blog-server.onrender.com'];
 
   app.use(cors({
     credentials: true,
