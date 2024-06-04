@@ -16,7 +16,7 @@ router.post('/post', uploadMiddleware.single('file'), async (req, res) => { //cr
   const newPath = path + '.' + ext;
   fs.renameSync(path, newPath);
   //const { token } = req.cookies;
-  token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlNlYW4iLCJpZCI6IjY2NWNlZGQwZWFiNWIxMWM5NGYxN2EzOSIsImlhdCI6MTcxNzUyNzMzMn0.BgylBjLDHekIKYfpCkoHUSt6snXoHar7Jwey997vXf0'
+  token = process.env.REACT_APP_TOKEN
   jwt.verify(token, secret, {}, async (err, info) => {
     if (err) throw err;
 
@@ -56,7 +56,7 @@ router.put('/post', uploadMiddleware.single('file'), async (req, res) => { //edi
   }
 
   //const { token } = req.cookies;
-  token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlNlYW4iLCJpZCI6IjY2NWNlZGQwZWFiNWIxMWM5NGYxN2EzOSIsImlhdCI6MTcxNzUyNzMzMn0.BgylBjLDHekIKYfpCkoHUSt6snXoHar7Jwey997vXf0'
+  token = process.env.REACT_APP_TOKEN
   console.log(token)
 
   if (!token) {
