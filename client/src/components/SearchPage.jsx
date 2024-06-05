@@ -46,6 +46,7 @@ function SearchPage() {
   }, []);
 
   const handleSearch = (event) => {
+    setCurrentPage(1)
     setQuery(event.target.value);
   };
 
