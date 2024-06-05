@@ -19,7 +19,7 @@ export default function Post({_id, category, title, summary, cover, content, aut
               <small className="info">
                 <span className="author">{author.username} - </span>
                 <span className="post-date">{formatDistanceToNow(new Date(createdAt))} ago</span>    
-              </small>  
+              </small> 
           </div>
         </div>
       </div>

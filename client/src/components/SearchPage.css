@@ -143,3 +143,21 @@
   .search-pagination button:not(:disabled) svg:hover {
     fill: rgb(31, 136, 197)
   }
+
+    @media screen and (max-width: 1100px) {
+        .search-header h1 {
+            font-size: 3em;
+        }
+        .search-page-wrapper {
+            padding: 0em 1em;
+        }
+        .search-info-content {
+            grid-template-columns: 1fr;
+        }
+        .search-info-header {
+            display: flex;
+            justify-content: first baseline;
+            flex-direction: column;
+            align-items: first baseline;
+        }
+    }
