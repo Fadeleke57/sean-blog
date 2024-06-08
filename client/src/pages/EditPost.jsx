@@ -1,4 +1,4 @@
-import React, { useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { Navigate, useParams } from "react-router-dom";
 import Editor from "../components/Editor";
 
@@ -12,21 +12,21 @@ export default function EditPost() {
   const [redirect, setRedirect] = useState(false);
 
   useEffect(() => {
-    fetch(`${process.env.BASE_URL}/post/` + id)
-      .then(response => {
-        response.json().then(postInfo => {
-          setCategory(postInfo.category)
-          setTitle(postInfo.title);
-          setContent(postInfo.content);
-          setSummary(postInfo.summary);
-        });
-      });
+    fetch(`${process.env.REACT_APP_BASE_URL}/post/` + id)
+      .then(response => response.json())
+      .then(postInfo => {
+        setCategory(postInfo.category);
+        setTitle(postInfo.title);
+        setContent(postInfo.content);
+        setSummary(postInfo.summary);
+      })
+      .catch(error => console.error('Error fetching post:', error));
   }, [id]);
 
   async function updatePost(ev) {
     ev.preventDefault();
     const data = new FormData();
-    data.set('category', category)
+    data.set('category', category);
     data.set('title', title);
     data.set('summary', summary);
     data.set('content', content);
@@ -34,28 +34,16 @@ export default function EditPost() {
     if (files && files[0]) {
       data.append('file', files[0]);
     }
-    // Debugging: Print out all cookies
-    console.log('Document Cookies:', document.cookie);
 
-    ///const tokenCookie = document.cookie
-    //if (!tokenCookie) {
-     /// console.error('No token found in cookies');
-    //  return;
-    ///}
-    //const token = tokenCookie.split('=')[1];
-  
-    //console.log('Token:', token);
-  
-    const response = await fetch(`${process.env.REACT_APP_BASE_URL}/post`, {
+    const response = await fetch(`${process.env.REACT_APP_BASE_URL}/post/` + id, {
       method: 'PUT',
       body: data,
       credentials: 'include'
     });
-    
+
     if (response.ok) {
       setRedirect(true);
     } else {
-      // Check if the response is JSON or plain text
       const contentType = response.headers.get('content-type');
       if (contentType && contentType.includes('application/json')) {
         const errorData = await response.json();
@@ -72,7 +60,7 @@ export default function EditPost() {
   };
 
   if (redirect) {
-    return <Navigate to={'/post/' + id} />
+    return <Navigate to={'/post/' + id} />;
   }
 
   return (
@@ -81,34 +69,34 @@ export default function EditPost() {
         <h1>Edit Post</h1>
         <div className='create-tag-options'>
           <label>
-              <input
-                type="radio"
-                name="category"
-                value="Personal"
-                checked={category === 'Personal'}
-                onChange={handleCategoryChange}
-              />
-              Personal
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="category"
-                value="Finance"
-                checked={category === 'Finance'}
-                onChange={handleCategoryChange}
-              />
-              Finance
-            </label>
-            <label style={{marginRight: '0em'}}>
-              <input
-                type="radio"
-                name="category"
-                value="IR"
-                checked={category === 'IR'}
-                onChange={handleCategoryChange}
-              />
-              IR
+            <input
+              type="radio"
+              name="category"
+              value="Personal"
+              checked={category === 'Personal'}
+              onChange={handleCategoryChange}
+            />
+            Personal
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="category"
+              value="Finance"
+              checked={category === 'Finance'}
+              onChange={handleCategoryChange}
+            />
+            Finance
+          </label>
+          <label style={{marginRight: '0em'}}>
+            <input
+              type="radio"
+              name="category"
+              value="IR"
+              checked={category === 'IR'}
+              onChange={handleCategoryChange}
+            />
+            IR
           </label>
         </div>
         <div className='create-text-inputs'>
@@ -135,6 +123,5 @@ export default function EditPost() {
         <button style={{ marginTop: '5px' }}>Update post</button>
       </form>
     </div>
-
   );
 }
