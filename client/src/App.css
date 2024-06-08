@@ -22,13 +22,16 @@ img {
 main {
   padding: 5em 8em 0em 8em;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   min-height: 100vh;
   gap: 2em;
 
 }
 
 footer {
-  position: absolute;
   left: 0;
   bottom: 0;
   width: 100%;
