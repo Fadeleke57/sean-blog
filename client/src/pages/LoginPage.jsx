@@ -2,6 +2,7 @@ import React, { useState, useContext} from "react";
 import { Navigate } from "react-router-dom";
 import {UserContext} from  '../UserContext.jsx'
 import './PostPage.css'
+import {toast, Toaster} from "react-hot-toast";
 
 export default function LoginPage() {
     const [username, setUsername] = useState('');
@@ -25,9 +26,12 @@ export default function LoginPage() {
         if (response.ok) {
             const userInfo = await response.json();
             setUserInfo(userInfo);
-            setRedirect(true);
+            toast.success('Login successful. Redirecting...');
+            setTimeout(() => {
+                setRedirect(true);
+            }, 1000); // Delay to allow the toast to show before redirecting
         } else {
-            alert('WRONG CREDENTIALS');
+            toast.error('Wrong credentials. Please try again.');
         }
     }
 
@@ -54,6 +58,5 @@ export default function LoginPage() {
             <button>Login</button>
         </form>
         </div>
-
     );
 }
