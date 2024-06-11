@@ -2,6 +2,7 @@ import React, { useState} from 'react';
 import { Navigate } from 'react-router-dom';
 import Editor from '../components/Editor';
 import './Create.css'
+import {toast} from 'react-hot-toast'
 
 export default function CreatePost() {
   const [title, setTitle] = useState('');
@@ -22,14 +23,16 @@ export default function CreatePost() {
     if (files && files[0]) {
       data.append('file', files[0]);
     }
-
     await fetch(`${process.env.REACT_APP_BASE_URL}/post`, {
       method: 'POST',
       body: data,
       credentials: 'include'
     });
 
-    setRedirect(true);
+    toast.success('Post created successfully!');
+    setTimeout(() => {
+      setRedirect(true);
+    }, 2000)
   }
 
   const handleCategoryChange = (e) => {

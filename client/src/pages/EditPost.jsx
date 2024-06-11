@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Navigate, useParams } from "react-router-dom";
 import Editor from "../components/Editor";
+import toast from "react-hot-toast";
 
 export default function EditPost() {
   const { id } = useParams();
@@ -34,16 +35,18 @@ export default function EditPost() {
     if (files && files[0]) {
       data.append('file', files[0]);
     }
-
     const response = await fetch(`${process.env.REACT_APP_BASE_URL}/post/` + id, {
       method: 'PUT',
       body: data,
       credentials: 'include'
     });
-
     if (response.ok) {
-      setRedirect(true);
+      toast.success('Successfully edited post!')
+      setTimeout(() => {
+        setRedirect(true);
+      }, 2000)
     } else {
+      toast.error('Error occurred while editing post.')
       const contentType = response.headers.get('content-type');
       if (contentType && contentType.includes('application/json')) {
         const errorData = await response.json();

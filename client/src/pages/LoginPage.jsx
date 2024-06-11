@@ -2,7 +2,7 @@ import React, { useState, useContext} from "react";
 import { Navigate } from "react-router-dom";
 import {UserContext} from  '../UserContext.jsx'
 import './PostPage.css'
-import {toast, Toaster} from "react-hot-toast";
+import {toast} from "react-hot-toast";
 
 export default function LoginPage() {
     const [username, setUsername] = useState('');
