@@ -29,7 +29,7 @@ export default function LoginPage() {
             toast.success('Login successful. Redirecting...');
             setTimeout(() => {
                 setRedirect(true);
-            }, 1000); // Delay to allow the toast to show before redirecting
+            }, 1000);
         } else {
             toast.error('Wrong credentials. Please try again.');
         }
