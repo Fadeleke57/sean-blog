@@ -15,8 +15,8 @@ router.post('/post', uploadMiddleware.single('file'), async (req, res) => { //cr
   const ext = parts[parts.length - 1];
   const newPath = path + '.' + ext;
   fs.renameSync(path, newPath);
-  //const { token } = req.cookies;
-  token = process.env.REACT_APP_TOKEN
+  const { token } = req.cookies;
+  //token = process.env.REACT_APP_TOKEN
   jwt.verify(token, secret, {}, async (err, info) => {
     if (err) throw err;
 
@@ -43,7 +43,7 @@ router.get('/post', async (req, res) => { //get posts
   res.json(posts);
 });
 
-router.put('/post', uploadMiddleware.single('file'), async (req, res) => { //edit posts
+router.put('/post/:id', uploadMiddleware.single('file'), async (req, res) => { //edit posts
 
   let newPath = null;
 
@@ -55,9 +55,8 @@ router.put('/post', uploadMiddleware.single('file'), async (req, res) => { //edi
     fs.renameSync(path, newPath);
   }
 
-  //const { token } = req.cookies;
-  token = process.env.REACT_APP_TOKEN
-  console.log(token)
+  const { token } = req.cookies;
+  //token = process.env.REACT_APP_TOKEN
 
   if (!token) {
     return res.status(401).json({ error: 'Authentication token is missing' });
