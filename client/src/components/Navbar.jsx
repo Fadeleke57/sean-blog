@@ -3,6 +3,7 @@ import React, { useEffect, useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../UserContext";
 import AnimatedBtn from './AnimatedBtn'
+import { toast } from 'react-hot-toast';
 
 function Navbar() {
   // styling stuff
@@ -30,8 +31,8 @@ function Navbar() {
     setMenuOpen(false)
   }
   
-  //user context for conditional rendering
-  const context = useContext(UserContext);
+  
+  const context = useContext(UserContext); //context for navbar header
 
   if (!context) {
     throw new Error("Header must be used within a UserProvider");
@@ -54,6 +55,7 @@ function Navbar() {
       method: 'POST',
     })
     setUserInfo(null);
+    toast.success('Logout successful.');
     closeTab()
   }
 

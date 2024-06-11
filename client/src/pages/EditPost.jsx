@@ -13,7 +13,7 @@ export default function EditPost() {
   const [redirect, setRedirect] = useState(false);
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_BASE_URL}/post/` + id)
+    fetch(`${process.env.REACT_APP_BASE_URL}/post/${id}`)
       .then(response => response.json())
       .then(postInfo => {
         setCategory(postInfo.category);
@@ -35,18 +35,18 @@ export default function EditPost() {
     if (files && files[0]) {
       data.append('file', files[0]);
     }
+
     const response = await fetch(`${process.env.REACT_APP_BASE_URL}/post/` + id, {
       method: 'PUT',
       body: data,
       credentials: 'include'
     });
+
     if (response.ok) {
-      toast.success('Successfully edited post!')
-      setTimeout(() => {
-        setRedirect(true);
-      }, 2000)
+      setRedirect(true);
+      toast.success('Post updated successfully!');
     } else {
-      toast.error('Error occurred while editing post.')
+      toast.error('Error updating post');
       const contentType = response.headers.get('content-type');
       if (contentType && contentType.includes('application/json')) {
         const errorData = await response.json();
